@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>bitfondue</title>
+	<link rel="stylesheet" href="stylesheets/bitfondue_main.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+	<script type="text/javascript" src="http://downloads.mailchimp.com/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="http://downloads.mailchimp.com/js/jquery.form.js"></script>
+	<script type="text/javascript" src="typekit.js"></script>
+  </head>
+  <body>
+    <div id="container">
+		<h1>bitfondue</h1>
+		<div id="image">
+			<img src="images/bitfondue_image.jpg"/>
+			<p>&copy; 2011 <a href="http://twitter.com/zurcherart">Steve</a> &amp; <a href="http://twitter.com/philippkueng">Philipp</a> | <a href="http://blog.bitfondue.com">Blog</a></p>
+		</div>
+		<div id="teaser">
+			<h2>Keep track of yourself.</h2>
+			<h3>Wherever you post something, we keep track of it so you don't have to.</h3>				
+<div id="mc_embed_signup">
+<form action="http://bitfondue.us2.list-manage.com/subscribe/post?u=5537c26f1f6320c297fe33785&amp;id=dad5f233fb" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+	<fieldset>
+	
+		<div class="mc-field-group">
+			<input type="text" value="Your Email Address" name="EMAIL" class="required email" id="mce-EMAIL" onblur="if (this.value == '') {this.value = 'Your Email Address';}" onfocus="if (this.value == 'Your Email Address') {this.value = '';}" />
+		</div>
+		<div class="bf_signup">
+			<input type="submit" value="Request a Beta Invite" name="subscribe" id="mc-embedded-subscribe" class="btn">
+		</div>
+		<div id="mce-responses">
+			<div class="response" id="mce-error-response" style="display:none"></div>
+			<div class="response" id="mce-success-response" style="display:none"></div>
+		</div>
+	</fieldset>	
+</form>
+</div>
+</div>
+<script type="text/javascript">
+var fnames = new Array();var ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';var err_style = '';
+try{
+    err_style = mc_custom_error_style;
+} catch(e){
+    err_style = '';
+}
+var mce_jQuery = jQuery.noConflict();
+mce_jQuery(document).ready( function($) {
+  var options = { errorClass: 'mce_inline_error', errorElement: 'div', errorStyle: err_style, onkeyup: function(){}, onfocusout:function(){}, onblur:function(){}  };
+  var mce_validator = mce_jQuery("#mc-embedded-subscribe-form").validate(options);
+  options = { url: 'http://bitfondue.us2.list-manage2.com/subscribe/post-json?u=5537c26f1f6320c297fe33785&id=dad5f233fb&c=?', type: 'GET', dataType: 'json', contentType: "application/json; charset=utf-8",
+                beforeSubmit: function(){
+                    mce_jQuery('#mce_tmp_error_msg').remove();
+                    mce_jQuery('.datefield','#mc_embed_signup').each(
+                        function(){
+                            var txt = 'filled';
+                            var fields = new Array();
+                            var i = 0;
+                            mce_jQuery(':text', this).each(
+                                function(){
+                                    fields[i] = this;
+                                    i++;
+                                });
+                            mce_jQuery(':hidden', this).each(
+                                function(){
+                                	if ( fields[0].value=='MM' && fields[1].value=='DD' && fields[2].value=='YYYY' ){
+                                		this.value = '';
+									} else if ( fields[0].value=='' && fields[1].value=='' && fields[2].value=='' ){
+                                		this.value = '';
+									} else {
+	                                    this.value = fields[0].value+'/'+fields[1].value+'/'+fields[2].value;
+	                                }
+                                });
+                        });
+                    return mce_validator.form();
+                }, 
+                success: mce_success_cb
+            };
+  mce_jQuery('#mc-embedded-subscribe-form').ajaxForm(options);
+
+});
+function mce_success_cb(resp){
+    mce_jQuery('#mce-success-response').hide();
+    mce_jQuery('#mce-error-response').hide();
+    if (resp.result=="success"){
+		mce_jQuery('h2').html('Thanks');
+		mce_jQuery('h3').html('We have sent you an email to confirm your email address.');
+		mce_jQuery('.mc-field-group').hide();
+		mce_jQuery('.bf_signup').hide();
+    } else {
+        var index = -1;
+        var msg;
+        try {
+            var parts = resp.msg.split(' - ',2);
+            if (parts[1]==undefined){
+                msg = resp.msg;
+            } else {
+                i = parseInt(parts[0]);
+                if (i.toString() == parts[0]){
+                    index = parts[0];
+                    msg = parts[1];
+                } else {
+                    index = -1;
+                    msg = resp.msg;
+                }
+            }
+        } catch(e){
+            index = -1;
+            msg = resp.msg;
+        }
+        try{
+            if (index== -1){
+                mce_jQuery('#mce-'+resp.result+'-response').show();
+                mce_jQuery('#mce-'+resp.result+'-response').html(msg);   
+            } else {
+                err_id = 'mce_tmp_error_msg';
+                html = '<div id="'+err_id+'" style="'+err_style+'"> '+msg+'</div>';
+                
+                var input_id = '#mc_embed_signup';
+                var f = mce_jQuery(input_id);
+                if (ftypes[index]=='address'){
+                    input_id = '#mce-'+fnames[index]+'-addr1';
+                    f = mce_jQuery(input_id).parent().parent().get(0);
+                } else if (ftypes[index]=='date'){
+                    input_id = '#mce-'+fnames[index]+'-month';
+                    f = mce_jQuery(input_id).parent().parent().get(0);
+                } else {
+                    input_id = '#mce-'+fnames[index];
+                    f = mce_jQuery().parent(input_id).get(0);
+                }
+                if (f){
+                    mce_jQuery(f).append(html);
+                    mce_jQuery(input_id).focus();
+                } else {
+                    mce_jQuery('#mce-'+resp.result+'-response').show();
+                    mce_jQuery('#mce-'+resp.result+'-response').html(msg);
+                }
+            }
+        } catch(e){
+            mce_jQuery('#mce-'+resp.result+'-response').show();
+            mce_jQuery('#mce-'+resp.result+'-response').html(msg);
+        }
+    }
+}
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21528744-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+			
+    </div>
+  </body>
+</html>

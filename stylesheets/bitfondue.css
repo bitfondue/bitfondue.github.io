@@ -1,0 +1,35 @@
+/* bitfondue v1.0 stylesheet */
+
+body{
+	background: #E5E5E5;
+}
+#container{
+	width: 800px;
+	margin: 0 auto;
+}
+
+/* HEADER (TITLE / SIGN IN) */
+header{
+	background: #A60311;
+	position: relative;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: 1px 1px 1px #FFF;
+}
+header h1{
+	color: #FFF;
+	font-size: 160%;
+	padding: 8px 0px 8px 8px;	
+	text-shadow: 1px 1px #000;
+	font-family: Helvetica, Arial, sans-serif;
+}
+header ul{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+header li{
+	float: left;
+	margin-right: 10px;
+}
+
